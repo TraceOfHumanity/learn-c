@@ -1,8 +1,17 @@
 #include <stdio.h>
-#include <other.h>
+
+void array(int size) {
+  char alphabet[size];
+  int x = 0;
+
+  while (x < size) {
+    alphabet[x] = 'a' + x;
+    printf("%c \n", alphabet[x]);
+    x++;
+  }
+}
 
 int main(void) {
-
-    printf("My favorite number is %d\n", getFavoriteNumber());
-    return 0;
+  array(5);
+  return 0;
 }
