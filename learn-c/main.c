@@ -1,17 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void array(int size) {
-  char alphabet[size];
-  int x = 0;
-
-  while (x < size) {
-    alphabet[x] = 'a' + x;
-    printf("%c \n", alphabet[x]);
-    x++;
-  }
-}
+struct s {
+  int arraySize;
+  int array[];
+};
 
 int main(void) {
-  array(5);
+  int desiredSize = 5;
+  struct s *ptr;
+
+  ptr = malloc(sizeof(struct s) + desiredSize * sizeof(int));
   return 0;
 }
