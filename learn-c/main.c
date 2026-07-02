@@ -1,28 +1,13 @@
 #include <stdio.h>
 
-long long convertDecimalToBinary(int n);
+int main(void) {
+  short int w1 = 25;
+  short int w2 = 77;
+  short int w3 = 0;
 
-int main() {
-  int n;
-  long long result = 0;
+  w3 = w1 & w2;
 
-  printf("Enter a decimal number: ");
-  scanf("%d", &n);
-  result = convertDecimalToBinary(n);
-  printf("%d in decimal = %lld in binary", n, result);
+  printf("%d\n", w3);
+
   return 0;
-}
-
-long long convertDecimalToBinary(int n) {
-  long long binaryNumber = 0;
-  int remainder, i = 0;
-
-  while (n != 0) {
-    remainder = n % 2;
-    n = n / 2;
-    binaryNumber += remainder * i;
-    i = i * 10;
-  }
-
-  return binaryNumber;
 }
