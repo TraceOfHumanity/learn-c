@@ -1,11 +1,19 @@
 #include <stdio.h>
 
 int main(void) {
-  short int w1 = 154;
-  short int result = 0;
+  int ch = '\0';
+  FILE *fp;
 
-  result = ~w1;
-  printf("%d", result);
+  if ((fp = fopen("foo.c", "r"))) {
+    ch = getc(fp);
 
+    while ((ch = getc(fp)) != EOF) {
+      printf("%c", ch);
+    }
+    printf("\n");
+    fclose(fp);
+  } else {
+    printf("не вдалось відкрити файл\n");
+  }
   return 0;
 }
