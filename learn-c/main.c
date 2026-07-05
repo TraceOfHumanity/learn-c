@@ -1,19 +1,22 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
-  int ch = '\0';
-  FILE *fp;
+  char buf[255];
+  int ch;
+  char *p;
 
-  if ((fp = fopen("foo.c", "r"))) {
-    ch = getc(fp);
-
-    while ((ch = getc(fp)) != EOF) {
-      printf("%c", ch);
+  if (fgets(buf, sizeof(buf), stdin)) {
+    p = strchr(buf, '\n');
+    if (p) {
+      *p = '\0';
+    } else {
+      while (((ch = getchar()) != '\n') && !feof(stdin) && !ferror(stdin)) {
+      }
     }
-    printf("\n");
-    fclose(fp);
   } else {
-    printf("не вдалось відкрити файл\n");
+    // 123
   }
+
   return 0;
 }
