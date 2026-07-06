@@ -40,27 +40,34 @@ int main(void) {
   printf("Введи значення: ");
   scanf("%lf", &value);
 
+  double result;
   switch (selectedDegreeScale) {
   case 1:
-    printf("%.2f\n", celsiusToFahrenheit(value));
+    result = celsiusToFahrenheit(value);
     break;
   case 2:
-    printf("%.2f\n", celsiusToKelvin(value));
+    result = celsiusToKelvin(value);
     break;
   case 3:
-    printf("%.2f\n", fahrenheitToCelsius(value));
+    result = fahrenheitToCelsius(value);
     break;
   case 4:
-    printf("%.2f\n", fahrenheitToKelvin(value));
+    result = fahrenheitToKelvin(value);
     break;
   case 5:
-    printf("%.2f\n", kelvinToCelsius(value));
+    result = kelvinToCelsius(value);
     break;
   case 6:
-    printf("%.2f\n", kelvinToFahrenheit(value));
+    result = kelvinToFahrenheit(value);
     break;
   default:
     printf("Невірний вибір\n");
+    return 1;
   }
-  return 0;
+
+  if (isnan(result)) {
+    printf("Помилка: значення нижче абсолютного нуля\n");
+    return 1;
+  }
+  printf("%.2f\n", result);
 }
