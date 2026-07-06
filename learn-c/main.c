@@ -1,22 +1,22 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
-  char buf[255];
-  int ch;
-  char *p;
+  char *buffer = NULL;
+  size_t bufferSize = 32;
+  size_t characters;
 
-  if (fgets(buf, sizeof(buf), stdin)) {
-    p = strchr(buf, '\n');
-    if (p) {
-      *p = '\0';
-    } else {
-      while (((ch = getchar()) != '\n') && !feof(stdin) && !ferror(stdin)) {
-      }
-    }
-  } else {
-    // 123
+  buffer = (char *)malloc(bufferSize * sizeof(char));
+
+  if (buffer == NULL) {
+    exit(1);
   }
+
+  printf("type something: ");
+  characters = getline(&buffer, &bufferSize, stdin);
+
+  printf("%zu characters where read.\n", characters);
 
   return 0;
 }
