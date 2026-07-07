@@ -1,22 +1,9 @@
 #include <stdio.h>
-#include <stdio.h>
-#include <stdlib.h>
 
-int main(void) {
-  char *buffer = NULL;
-  size_t bufferSize = 32;
-  size_t characters;
-
-  buffer = (char *)malloc(bufferSize * sizeof(char));
-
-  if (buffer == NULL) {
-    exit(1);
-  }
-
-  printf("type something: ");
-  characters = getline(&buffer, &bufferSize, stdin);
-
-  printf("%zu characters where read.\n", characters);
-
+int main(void)
+{
+  char string[100];
+  sprintf(string, "hello, this is the number: %d", 55);
+  puts(string);
   return 0;
 }

@@ -1,3 +1,4 @@
 learn-c.xcodeproj/
 program*
 Info.plist
+*.asm
