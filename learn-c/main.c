@@ -1,17 +1,32 @@
+#include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+double avarage(double v1, double v2, ...) {
+  va_list parg;
+  double sum = v1 + v2;
+  double value = 0.0;
+
+  int count = 2;
+  va_start(parg, v2);
+
+  while ((value = va_arg(parg, double)) != 0.0) {
+    sum += value;
+    count++;
+  }
+
+  va_end(parg);
+
+  return sum / count;
+};
 
 int main(void) {
-  char *str = "Alex TH 2000000000";
-  char name[10], title[10];
-  int age = 0, ret = 0;
+  double v1 = 10.5, v2 = 2.5;
+  int num1 = 6, num2 = 5;
+  long num3 = 12L, num4 = 20L;
 
-  ret = sscanf(str, "%s %s %d", name, title, &age);
-
-  printf("Name: %s\n", name);
-  printf("Title: %s\n", title);
-  printf("Age: %d\n", age);
-
+  printf("Average = %.2lf\n", avarage(v1, 3.5, v2, 4.5, 0.0));
+  printf("Average = %.2lf\n", avarage(1.0, 2.0, 0.0));
+  printf("Average = %.2lf\n", avarage((double)num2, v2, (double)num1,
+                                      (double)num4, (double)num3, 0.0));
   return 0;
 }
