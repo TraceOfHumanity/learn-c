@@ -2,30 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX 41
-
 int main(void) {
-  FILE *fp = NULL;
-  char words[MAX];
+  char *str = "Alex TH 2000000000";
+  char name[10], title[10];
+  int age = 0, ret = 0;
 
-  if ((fp = fopen("./data.txt", "a+")) == NULL) {
-    fprintf(stdout, "cant open file.\n");
-    exit(EXIT_FAILURE);
-  }
+  ret = sscanf(str, "%s %s %d", name, title, &age);
 
-  puts("Enter words to add to the file; press the #");
-  puts("key at the beginning of a line to terminate.");
-  while ((fscanf(stdin, "%40s", words) == 1) && (words[0] != '#'))
-    fprintf(fp, "%s\n", words);
-
-  puts("File contents:");
-  rewind(fp); /* go back to beginning of file */
-  while (fscanf(fp, "%s", words) == 1)
-    puts(words);
-
-  puts("Done!");
-  if (fclose(fp) != 0)
-    fprintf(stderr, "Error closing file\n");
+  printf("Name: %s\n", name);
+  printf("Title: %s\n", title);
+  printf("Age: %d\n", age);
 
   return 0;
 }
